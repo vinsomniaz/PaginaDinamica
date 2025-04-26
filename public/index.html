@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Cloud Academy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .course-card {
+            transition: transform 0.3s;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">AI & Cloud Academy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reports">Reportes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section py-5">
+        <div class="container text-center">
+            <h1 class="display-4">Domina las tecnologías del futuro</h1>
+            <p class="lead">Cursos de Inteligencia Artificial y Cloud Computing</p>
+        </div>
+    </section>
+
+    <!-- Cursos -->
+    <section id="courses" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Nuestros Cursos</h2>
+            <div class="row g-4">
+                <!-- Curso 1 -->
+                <div class="col-md-4">
+                    <div class="card course-card h-100">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="AI Course">
+                        <div class="card-body">
+                            <h5 class="card-title">Fundamentos de IA</h5>
+                            <p class="card-text">Aprende los conceptos básicos de inteligencia artificial y machine learning.</p>
+                            <p class="h4">$99.99</p>
+                            <button class="btn btn-primary buy-btn" data-course="Fundamentos de IA" data-price="99.99">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Curso 2 -->
+                <div class="col-md-4">
+                    <div class="card course-card h-100">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Cloud Course">
+                        <div class="card-body">
+                            <h5 class="card-title">Azure para Principiantes</h5>
+                            <p class="card-text">Domina los fundamentos de la nube con Microsoft Azure.</p>
+                            <p class="h4">$79.99</p>
+                            <button class="btn btn-primary buy-btn" data-course="Azure para Principiantes" data-price="79.99">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Curso 3 -->
+                <div class="col-md-4">
+                    <div class="card course-card h-100">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Advanced AI">
+                        <div class="card-body">
+                            <h5 class="card-title">IA Avanzada</h5>
+                            <p class="card-text">Deep learning y redes neuronales para aplicaciones reales.</p>
+                            <p class="h4">$129.99</p>
+                            <button class="btn btn-primary buy-btn" data-course="IA Avanzada" data-price="129.99">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Compra (modal) -->
+    <div class="modal fade" id="purchaseModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Completar Compra</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="purchaseForm">
+                        <input type="hidden" id="courseName">
+                        <input type="hidden" id="coursePrice">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="alert alert-info">
+                            <p id="courseInfo"></p>
+                            <p id="priceInfo" class="fw-bold"></p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmPurchase">Confirmar Compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reportes -->
+    <section id="reports" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Reportes de Ventas</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Ventas por Curso
+                        </div>
+                        <div class="card-body">
+                            <canvas id="coursesChart" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            Últimas Ventas
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" id="salesTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Curso</th>
+                                            <th>Estudiante</th>
+                                            <th>Precio</th>
+                                            <th>Fecha</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Datos se llenarán con JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>© 2023 AI & Cloud Academy. Todos los derechos reservados.</p>
+            <p>Desarrollado con Azure Static Web Apps y Cosmos DB</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Configuración del modal de compra
+        document.querySelectorAll('.buy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const courseName = this.getAttribute('data-course');
+                const coursePrice = this.getAttribute('data-price');
+                
+                document.getElementById('courseName').value = courseName;
+                document.getElementById('coursePrice').value = coursePrice;
+                document.getElementById('courseInfo').textContent = `Curso: ${courseName}`;
+                document.getElementById('priceInfo').textContent = `Precio: $${coursePrice}`;
+                
+                const modal = new bootstrap.Modal(document.getElementById('purchaseModal'));
+                modal.show();
+            });
+        });
+
+        // Confirmar compra
+        document.getElementById('confirmPurchase').addEventListener('click', async function() {
+            const purchaseData = {
+                course: document.getElementById('courseName').value,
+                price: parseFloat(document.getElementById('coursePrice').value),
+                student: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                date: new Date().toISOString()
+            };
+
+            try {
+                const response = await fetch('/api/purchases', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(purchaseData)
+                });
+
+                if (response.ok) {
+                    alert('Compra realizada con éxito!');
+                    bootstrap.Modal.getInstance(document.getElementById('purchaseModal')).hide();
+                    loadReports();
+                } else {
+                    throw new Error('Error en la compra');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Hubo un error al procesar tu compra');
+            }
+        });
+
+        // Cargar reportes
+        async function loadReports() {
+            try {
+                const response = await fetch('/api/purchases');
+                const purchases = await response.json();
+                
+                // Actualizar tabla
+                const tableBody = document.querySelector('#salesTable tbody');
+                tableBody.innerHTML = purchases.slice(0, 5).map(purchase => `
+                    <tr>
+                        <td>${purchase.course}</td>
+                        <td>${purchase.student}</td>
+                        <td>$${purchase.price.toFixed(2)}</td>
+                        <td>${new Date(purchase.date).toLocaleDateString()}</td>
+                    </tr>
+                `).join('');
+                
+                // Actualizar gráfico
+                const courses = [...new Set(purchases.map(p => p.course))];
+                const counts = courses.map(course => 
+                    purchases.filter(p => p.course === course).length
+                );
+                
+                const ctx = document.getElementById('coursesChart').getContext('2d');
+                if (window.coursesChart) {
+                    window.coursesChart.destroy();
+                }
+                
+                window.coursesChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: courses,
+                        datasets: [{
+                            label: 'Ventas por Curso',
+                            data: counts,
+                            backgroundColor: [
+                                'rgba(110, 142, 251, 0.7)',
+                                'rgba(167, 119, 227, 0.7)',
+                                'rgba(75, 192, 192, 0.7)'
+                            ],
+                            borderColor: [
+                                'rgba(110, 142, 251, 1)',
+                                'rgba(167, 119, 227, 1)',
+                                'rgba(75, 192, 192, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Error cargando reportes:', error);
+            }
+        }
+
+        // Cargar reportes al inicio
+        document.addEventListener('DOMContentLoaded', loadReports);
+    </script>
+</body>
+</html>
